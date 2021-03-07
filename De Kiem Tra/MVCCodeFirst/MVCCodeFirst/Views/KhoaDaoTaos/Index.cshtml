@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MVCCodeFirst.Models.KhoaDaoTao>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm())
+{
+    <p>Tên khoa: @Html.TextBox("TenKhoa") <input type="submit" value="Tìm" /></p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenKhoa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoDienThoai)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenKhoa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoDienThoai)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaKhoa }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaKhoa }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaKhoa })
+        </td>
+    </tr>
+}
+
+</table>

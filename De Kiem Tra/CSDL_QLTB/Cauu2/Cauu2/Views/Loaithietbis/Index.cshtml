@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Cauu2.Models.Loaithietbi>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tenloai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Danhmuc)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tenloai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Danhmuc)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Maloai }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Maloai }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Maloai })
+        </td>
+    </tr>
+}
+
+</table>

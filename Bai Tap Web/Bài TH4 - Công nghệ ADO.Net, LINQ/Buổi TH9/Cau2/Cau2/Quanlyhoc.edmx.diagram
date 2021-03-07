@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9dd43511556a41d19596a5c1594d46bc" Name="Diagram1">
+        <EntityTypeShape EntityType="QuanLyHocModel.DangKyHoc" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyHocModel.KhoaDaoTao" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyHocModel.MonHoc" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyHocModel.SinhVien" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyHocModel.sysdiagram" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="QuanLyHocModel.FK_DangKyHoc_MonHoc" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyHocModel.FK_DangKyHoc_SinhVien" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyHocModel.FK_MonHoc_KhoaDaoTao" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyHocModel.FK_SinhVien_KhoaDaoTao" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

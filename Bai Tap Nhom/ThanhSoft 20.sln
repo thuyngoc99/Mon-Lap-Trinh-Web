@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1267
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ThanhSoft 20", "..\Downloads\[Sharecode.vn] Code website gioi thieu cong ty phan mem Asp.Net + bao cao\[Sharecode.vn] Code website gioi thieu cong ty phan mem Asp.Net + bao cao\ThanhSoft 20\", "{0E25C918-4466-478A-90F8-14204730BB5C}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv3.5"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_63246"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\Downloads\[Sharecode.vn] Code website gioi thieu cong ty phan mem Asp.Net + bao cao\[Sharecode.vn] Code website gioi thieu cong ty phan mem Asp.Net + bao cao\ThanhSoft 20\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_63246\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_63246"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\Downloads\[Sharecode.vn] Code website gioi thieu cong ty phan mem Asp.Net + bao cao\[Sharecode.vn] Code website gioi thieu cong ty phan mem Asp.Net + bao cao\ThanhSoft 20\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_63246\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "63246"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E25C918-4466-478A-90F8-14204730BB5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E25C918-4466-478A-90F8-14204730BB5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A562F9D-708E-48AA-991E-F7D5C91B1F3E}
+	EndGlobalSection
+EndGlobal

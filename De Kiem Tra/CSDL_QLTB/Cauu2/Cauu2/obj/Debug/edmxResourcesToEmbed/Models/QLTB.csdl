@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLTBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DonVi">
+    <Key>
+      <PropertyRef Name="MaDV" />
+    </Key>
+    <Property Name="MaDV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenDV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Thietbis" Relationship="Self.FK_Thietbi_DonVi" FromRole="DonVi" ToRole="Thietbi" />
+  </EntityType>
+  <EntityType Name="Loaithietbi">
+    <Key>
+      <PropertyRef Name="Maloai" />
+    </Key>
+    <Property Name="Maloai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tenloai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Danhmuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Thietbis" Relationship="Self.FK_Thietbi_Loaithietbi" FromRole="Loaithietbi" ToRole="Thietbi" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Thietbi">
+    <Key>
+      <PropertyRef Name="MaTB" />
+    </Key>
+    <Property Name="MaTB" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaDV" Type="Int32" />
+    <Property Name="Maloai" Type="Int32" />
+    <Property Name="TenTB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NuocXB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DonVi" Relationship="Self.FK_Thietbi_DonVi" FromRole="Thietbi" ToRole="DonVi" />
+    <NavigationProperty Name="Loaithietbi" Relationship="Self.FK_Thietbi_Loaithietbi" FromRole="Thietbi" ToRole="Loaithietbi" />
+  </EntityType>
+  <Association Name="FK_Thietbi_DonVi">
+    <End Role="DonVi" Type="Self.DonVi" Multiplicity="0..1" />
+    <End Role="Thietbi" Type="Self.Thietbi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonVi">
+        <PropertyRef Name="MaDV" />
+      </Principal>
+      <Dependent Role="Thietbi">
+        <PropertyRef Name="MaDV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Thietbi_Loaithietbi">
+    <End Role="Loaithietbi" Type="Self.Loaithietbi" Multiplicity="0..1" />
+    <End Role="Thietbi" Type="Self.Thietbi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Loaithietbi">
+        <PropertyRef Name="Maloai" />
+      </Principal>
+      <Dependent Role="Thietbi">
+        <PropertyRef Name="Maloai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLTBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DonVis" EntityType="Self.DonVi" />
+    <EntitySet Name="Loaithietbis" EntityType="Self.Loaithietbi" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Thietbis" EntityType="Self.Thietbi" />
+    <AssociationSet Name="FK_Thietbi_DonVi" Association="Self.FK_Thietbi_DonVi">
+      <End Role="DonVi" EntitySet="DonVis" />
+      <End Role="Thietbi" EntitySet="Thietbis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Thietbi_Loaithietbi" Association="Self.FK_Thietbi_Loaithietbi">
+      <End Role="Loaithietbi" EntitySet="Loaithietbis" />
+      <End Role="Thietbi" EntitySet="Thietbis" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuanlyhocDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DangKyHoc">
+    <Key>
+      <PropertyRef Name="MaDangKy" />
+    </Key>
+    <Property Name="MaDangKy" Type="int" Nullable="false" />
+    <Property Name="MaSV" Type="nvarchar" MaxLength="10" />
+    <Property Name="MaMon" Type="nvarchar" MaxLength="3" />
+    <Property Name="NamHocKy" Type="nvarchar" MaxLength="6" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="KhoaDaoTao">
+    <Key>
+      <PropertyRef Name="MaKhoa" />
+    </Key>
+    <Property Name="MaKhoa" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="TenKhoa" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="MonHoc">
+    <Key>
+      <PropertyRef Name="MaMon" />
+    </Key>
+    <Property Name="MaKhoa" Type="nvarchar" MaxLength="2" />
+    <Property Name="MaMon" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="TenMon" Type="nvarchar" MaxLength="30" />
+    <Property Name="SoTinChi" Type="int" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SinhVien">
+    <Key>
+      <PropertyRef Name="MaSV" />
+    </Key>
+    <Property Name="MaKhoa" Type="nvarchar" MaxLength="2" />
+    <Property Name="LopBC" Type="nvarchar" MaxLength="10" />
+    <Property Name="MaSV" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="30" />
+    <Property Name="NgaySinh" Type="nvarchar" MaxLength="10" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_DangKyHoc_MonHoc">
+    <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="0..1" />
+    <End Role="DangKyHoc" Type="Self.DangKyHoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MonHoc">
+        <PropertyRef Name="MaMon" />
+      </Principal>
+      <Dependent Role="DangKyHoc">
+        <PropertyRef Name="MaMon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DangKyHoc_SinhVien">
+    <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1" />
+    <End Role="DangKyHoc" Type="Self.DangKyHoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SinhVien">
+        <PropertyRef Name="MaSV" />
+      </Principal>
+      <Dependent Role="DangKyHoc">
+        <PropertyRef Name="MaSV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MonHoc_KhoaDaoTao">
+    <End Role="KhoaDaoTao" Type="Self.KhoaDaoTao" Multiplicity="0..1" />
+    <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhoaDaoTao">
+        <PropertyRef Name="MaKhoa" />
+      </Principal>
+      <Dependent Role="MonHoc">
+        <PropertyRef Name="MaKhoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SinhVien_KhoaDaoTao">
+    <End Role="KhoaDaoTao" Type="Self.KhoaDaoTao" Multiplicity="0..1" />
+    <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhoaDaoTao">
+        <PropertyRef Name="MaKhoa" />
+      </Principal>
+      <Dependent Role="SinhVien">
+        <PropertyRef Name="MaKhoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QuanlyhocDBModelStoreContainer">
+    <EntitySet Name="DangKyHoc" EntityType="Self.DangKyHoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KhoaDaoTao" EntityType="Self.KhoaDaoTao" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MonHoc" EntityType="Self.MonHoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SinhVien" EntityType="Self.SinhVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_DangKyHoc_MonHoc" Association="Self.FK_DangKyHoc_MonHoc">
+      <End Role="MonHoc" EntitySet="MonHoc" />
+      <End Role="DangKyHoc" EntitySet="DangKyHoc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DangKyHoc_SinhVien" Association="Self.FK_DangKyHoc_SinhVien">
+      <End Role="SinhVien" EntitySet="SinhVien" />
+      <End Role="DangKyHoc" EntitySet="DangKyHoc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MonHoc_KhoaDaoTao" Association="Self.FK_MonHoc_KhoaDaoTao">
+      <End Role="KhoaDaoTao" EntitySet="KhoaDaoTao" />
+      <End Role="MonHoc" EntitySet="MonHoc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SinhVien_KhoaDaoTao" Association="Self.FK_SinhVien_KhoaDaoTao">
+      <End Role="KhoaDaoTao" EntitySet="KhoaDaoTao" />
+      <End Role="SinhVien" EntitySet="SinhVien" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
